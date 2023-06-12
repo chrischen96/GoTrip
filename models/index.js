@@ -3,9 +3,9 @@ const npSchema = require('./np')
 const planSchema = require('./plan')
 const userSchema = require('./user')
 
-const NPs = db.model('NP', npSchema)
-const Plans = db.model('Plan', planSchema)
-const Users = db.model('User', userSchema)
+const NPs = mongoose.model('NP', npSchema)
+const Plans = mongoose.model('Plan', planSchema)
+const Users = mongoose.model('User', userSchema)
 
 module.exports = {
     NPs,

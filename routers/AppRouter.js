@@ -5,6 +5,6 @@ const userRouter = require('./userRouter')
 
 router.use('/nps', npRouter)
 router.use('/plans', planRouter)
-router.use('/users', userRouter)
+router.use('/user', userRouter)
 
 module.exports = router
