@@ -5,7 +5,8 @@ const planController = require('../controllers/planController')
 router.post('/', planController.create)
 
 router.get('/', planController.getAll)
-router.get('/:id', planController.getById)
+router.get('/id/:id', planController.getById)
+router.get('/user/:username',planController.getByUser)
 router.get('/find',planController.find)
 
 router.put('/:id', planController.update)
