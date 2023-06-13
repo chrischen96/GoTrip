@@ -1,0 +1,39 @@
+body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+#logo {
+    height: 50px;
+}
+
+header {
+    margin: 0;
+    padding: 0;
+    position: sticky;
+    background-color: rgb(240,240,240);
+}
+
+.nav-container {
+    margin: 0 50px;
+    color: #373D20;
+}
+
+.nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-list li {
+    width: 20vw;
+    display: inline-block;
+    text-align: center;
+}
