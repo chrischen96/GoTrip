@@ -1,6 +1,6 @@
 const {NPs} = require('../models')
 
-const creat = async(req, res) => {
+const create = async(req, res) => {
     try {
         console.log(req.body)
         const NP = new NPs(req.body)
@@ -13,7 +13,12 @@ const creat = async(req, res) => {
 
 const getAll = async(req, res) => {
     try {
-
+        const nps = await NPs.find()
+        if (nps) {
+            res.status(200).json(nps)
+        } else {
+            res.status(404).send('Not found')
+        }
     } catch (e) {
         res.status(500).send(e.message)
     }
@@ -21,7 +26,13 @@ const getAll = async(req, res) => {
 
 const getById = async(req, res) => {
     try {
-
+        const {id} = req.params
+        const np = await NPs.findById(id)
+        if (np) {
+            res.status(200).json(np)
+        } else {
+            res.status(404).send('Not found')
+        }
     } catch (e) {
         res.status(500).send(e.message)
     }
@@ -29,7 +40,12 @@ const getById = async(req, res) => {
 
 const find = async(req, res) => {
     try {
-
+        const nps = await NPs.find(req.query)
+        if (nps) {
+            res.status(200).json(nps)
+        } else {
+            res.status(404).send('Not found')
+        }
     } catch (e) {
         res.status(500).send(e.message)
     }
@@ -37,7 +53,13 @@ const find = async(req, res) => {
 
 const update = async(req, res) => {
     try {
-
+        const {id} = req.params
+        const nps = await NPs.findByIdAndUpdate(id, req.body, {new: true})
+        if (nps) {
+            res.status(200).json(nps)
+        } else {
+            res.status(404).send('Not found')
+        }
     } catch (e) {
         res.status(500).send(e.message)
     }
@@ -45,16 +67,23 @@ const update = async(req, res) => {
 
 const deleteNP = async(req, res) => {
     try {
-
+        const {id} = req.params
+        const np = await NPs.findByIdAndDelete(id)
+        if (np) {
+            res.status(200).json(np)
+        } else {
+            res.status(404).send('Not found')
+        }
     } catch (e) {
         res.status(500).send(e.message)
     }
 }
 
 module.exports = {
-    creat,
+    create,
     getAll,
     getById,
+    find,
     update,
     deleteNP
 }

@@ -5,7 +5,7 @@ const npController = require('../controllers/npController')
 router.post('/', npController.create)
 
 router.get('/', npController.getAll)
-router.get('/:id', npController.getById)
+router.get('/id/:id', npController.getById)
 router.get('/find', npController.find)
 
 router.put('/:id', npController.update)

@@ -53,7 +53,7 @@ const getByUser = async (req, res) => {
 
 const find = async (req, res) => {
     try {
-        const plans = await Plans.find(req.body)
+        const plans = await Plans.find(req.query)
         res.status(200).json(plans)
     } catch (e) {
         res.status(500).rend(e.message)
