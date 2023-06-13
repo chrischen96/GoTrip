@@ -11,6 +11,6 @@ router.get('/find',planController.find)
 
 router.put('/:id', planController.update)
 
-router.delete('/:id', planController.delete)
+router.delete('/:id', planController.deletePlan)
 
 module.exports = router

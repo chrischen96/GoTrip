@@ -14,6 +14,7 @@ const create = async(req, res) => {
 const getAll = async(req, res) => {
     try {
         const nps = await NPs.find()
+        console.log(nps)
         if (nps) {
             res.status(200).json(nps)
         } else {

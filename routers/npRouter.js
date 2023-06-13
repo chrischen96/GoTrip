@@ -10,6 +10,6 @@ router.get('/find', npController.find)
 
 router.put('/:id', npController.update)
 
-router.delete('/:id', npController.delete)
+router.delete('/:id', npController.deleteNP)
 
 module.exports = router

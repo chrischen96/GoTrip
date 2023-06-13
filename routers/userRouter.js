@@ -9,6 +9,6 @@ router.get('/:id', userController.getById)
 
 router.put('/:id', userController.update)
 
-router.delete('/:id', userController.delete)
+router.delete('/:id', userController.deleteUser)
 
 module.exports = router
