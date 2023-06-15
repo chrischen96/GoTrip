@@ -7,6 +7,7 @@ const npSchema = new Schema(
     state: {type: String, required: true},
     latLng: {type:String, required: true},
     establishDate: {type: Date, required: true},
+    topic: {type: String, required: true},
     area: {type: Number, required: true},
     visitors: {type: Number, required: true},
     description: {type: String, required: true}

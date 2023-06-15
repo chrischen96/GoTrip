@@ -41,7 +41,19 @@ const getById = async(req, res) => {
 
 const find = async(req, res) => {
     try {
-        const nps = await NPs.find(req.query)
+        console.log(req.query)
+        const area = req.query.area
+        const query = req.query
+        if (area) {
+            if (area === 'small') {
+                query.area = {$lt: 1500}
+            } else if (area === 'large') {
+                query.area = {$gte: 4500}
+            } else {
+                query.area = {$gte: 1500, $lt: 4500}
+            }
+        }
+        const nps = await NPs.find(query)
         if (nps) {
             res.status(200).json(nps)
         } else {

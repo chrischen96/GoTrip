@@ -1,6 +1,7 @@
 const express = require('express')
 const sessions = require('express-session')
 const cookieParser = require('cookie-parser')
+const cors = require('cors')
 require('dotenv').config();
 const db = require('./db')
 const logger = require('morgan')
@@ -10,6 +11,7 @@ const PORT = process.env.PORT | 3001
 const app = express()
 
 app.use(express.json())
+app.use(cors())
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
 app.use(sessions({
@@ -19,7 +21,6 @@ app.use(sessions({
     resave: false 
 }));
 console.log(process.env.SESSION)
-app.use(logger())
 
 app.listen(PORT, () => console.log(`server listening on port ${PORT}`))
 
