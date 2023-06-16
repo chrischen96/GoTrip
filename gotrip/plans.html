@@ -11,8 +11,8 @@
 </head>
 <body>
     <header>
-      <nav class="navbar navbar-expand-sm bg-body-tertiary">
-        <div class="container-fluid">
+      <nav  class="navbar navbar-expand-sm" style="background-color: rgb(240,240,240)" >
+        <div class="container-fluid px-5">
           <a class="navbar-brand" href="index.html"><img class="logo" src="trip-icon.jpg" alt="logo"></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -27,14 +27,96 @@
               </li>
               
               <li class="nav-item">
-                <a class="nav-link" href="#">Profile</a>
+                <a class="nav-link" href="user.html">Profile</a>
               </li>
             </ul>
             
-            <button id="loginButton" class="btn btn-outline-success" type="button">Sign in</button>
+            <!-- <button id="loginButton" class="btn btn-outline-success" type="button">Sign in</button> -->
           </div>
         </div>
       </nav>
     </header>
+
+    <main>
+      <div class="container-fluid my-5">
+        <div id="planCards" class="row justify-content-center" >
+
+        </div>
+      </div>
+    </main>
+
+<script>
+  const planCards = document.getElementById('planCards')
+
+  getData()
+
+  async function getData() {
+    const res = await axios.get('http://127.0.0.1:3001/api/plans')
+    const plans = res.data
+    console.log(plans)
+    render(plans)
+  }
+
+  async function render(plans) {
+    for (plan of plans) {
+      console.log(plan)
+      // const destination = res.data.name
+      const card = document.createElement('div')
+      card.className = 'card card m-3 p-0 col-sm-5 col-10'
+      card.id = plan._id
+      card.innerHTML = `
+      <div class="card-body">
+        <h5 class="card-title">${plan.destination}</h5>
+        <p class="card-text fw-5">${plan.title}</p>
+      </div>
+
+      <ul class="list-group list-group-flush">
+        
+        <li class="list-group-item">Date: ${new Date(plan.startDate).toLocaleDateString('en-us',{month:'short', day: 'numeric', year: 'numeric'})}</li>
+        <li class="list-group-item">Budget: $${plan.budget}</li>
+        <li class="list-group-item">Note: ${plan.note}</li>
+      </ul>
+      `
+      let cardBody = document.createElement('div')
+      cardBody.className = 'card-body d-flex justify-content-between'
+
+      let editBtn = document.createElement('button')
+      editBtn.id = 'E' + plan._id
+      editBtn.type = 'button'
+      editBtn.className = 'btn btn-primary py-1'
+      editBtn.innerHTML = 'Edit'
+      console.log(plan._id)
+      editBtn.addEventListener('click', (event) => {
+        const id = event.target.id.substring(1)
+        console.log(id)
+        window.location.href = `edit.html?id=${id}`
+      })
+
+      const deleteBtn = document.createElement('button')
+      deleteBtn.id = 'D' + plan._id
+      deleteBtn.type = 'button'
+      deleteBtn.className = 'btn btn-danger py-1'
+      deleteBtn.innerHTML = 'Delete'
+      deleteBtn.addEventListener('click', async() => {
+        await axios.delete(`http://127.0.0.1:3001/api/plans/${plan._id}`).then((res) => {
+          console.log(res)
+        })
+        planCards.innerHTML = ''
+        getData()
+      })
+
+      cardBody.appendChild(editBtn)
+      cardBody.appendChild(deleteBtn)
+      card.appendChild(cardBody)
+      planCards.appendChild(card)
+      // <div class="card-body">
+      //   <button id='edit${plan._id}' type="button" class="btn btn-primary">Edit</button>
+      //   <button id='delete${}' type="button" class="btn btn-danger">Delete</button>
+      // </div>
+
+    }
+  }
+  
+</script>
 </body>
 </html>

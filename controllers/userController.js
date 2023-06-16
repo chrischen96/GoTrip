@@ -12,7 +12,7 @@ const create = async(req, res) => {
 
 const getAll = async(req, res) => {
     try {
-        const users = await Users.find()
+        const users = await Users.find(req.query)
         if (users) {
             res.status(200).json(users)
         } else {

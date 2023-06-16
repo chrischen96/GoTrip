@@ -3,16 +3,16 @@ const stateForm = document.getElementById('form-state')
 const topicForm = document.getElementById('form-topic')
 const areaForm = document.getElementById('form-area')
 const searchButton = document.getElementById('searchButton')
-const loginButton = document.getElementById('loginButton')
+//const loginButton = document.getElementById('loginButton')
 const npCards = document.getElementById('np-cards') 
 
-loginButton.addEventListener('click', async() => {
-    await axios.get('http://127.0.0.1:3001/')
-    .then(res => {
-        console.log(res.data)
-        window.open('index.html')
-    })
-})
+// loginButton.addEventListener('click', async() => {
+//     await axios.get('http://127.0.0.1:3001/')
+//     .then(res => {
+//         console.log(res.data)
+//         window.open('index.html')
+//     })
+// })
 
 axios.get('http://127.0.0.1:3001/api/nps')
     .then((res) => {

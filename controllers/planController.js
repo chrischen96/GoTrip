@@ -2,6 +2,7 @@ const {Plans} = require('../models')
 
 const create = async(req, res) => {
     try {
+        console.log(req.body)
         const plan = new Plans(req.body)
         await plan.save()
         res.status(200).json(plan)
@@ -76,7 +77,14 @@ const update = async(req, res) => {
 
 const deletePlan = async(req, res) => {
     try {
-        const {id} = req.param
+        const {id} = req.params
+        const plan = await Plans.findByIdAndDelete(id)
+        console.log(id,plan)
+        if (plan) {
+            res.status(200).json(plan)
+        } else {
+            res.status(404).send('Not Found')
+        }
     } catch (e) {
         res.status(500).send(e.message)
     }
