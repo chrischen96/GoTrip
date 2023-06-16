@@ -12,7 +12,7 @@
 <body>
     <header>
       <nav  class="navbar navbar-expand-sm" style="background-color: rgb(240,240,240)" >
-        <div class="container-fluid px-5">
+        <div class="container">
           <a class="navbar-brand" href="index.html"><img class="logo" src="trip-icon.jpg" alt="logo"></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -38,7 +38,7 @@
     </header>
 
     <main>
-      <div class="container-fluid my-5">
+      <div class="container my-5">
         <div id="planCards" class="row justify-content-center" >
 
         </div>
@@ -98,7 +98,9 @@
       deleteBtn.className = 'btn btn-danger py-1'
       deleteBtn.innerHTML = 'Delete'
       deleteBtn.addEventListener('click', async() => {
-        await axios.delete(`http://127.0.0.1:3001/api/plans/${plan._id}`).then((res) => {
+        const id = event.target.id.substring(1)
+        console.log(id)
+        await axios.delete(`http://127.0.0.1:3001/api/plans/${id}`).then((res) => {
           console.log(res)
         })
         planCards.innerHTML = ''
