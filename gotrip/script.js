@@ -3,11 +3,19 @@ const stateForm = document.getElementById('form-state')
 const topicForm = document.getElementById('form-topic')
 const areaForm = document.getElementById('form-area')
 const searchButton = document.getElementById('searchButton')
+const loginButton = document.getElementById('loginButton')
 const npCards = document.getElementById('np-cards') 
+
+loginButton.addEventListener('click', async() => {
+    await axios.get('http://127.0.0.1:3001/')
+    .then(res => {
+        console.log(res.data)
+        window.open('index.html')
+    })
+})
 
 axios.get('http://127.0.0.1:3001/api/nps')
     .then((res) => {
-        console.log(res.data)
         const nps = res.data
         renderCards(nps)
         const stateList = []
@@ -54,7 +62,7 @@ searchButton.addEventListener('click', async() => {
 function renderCards(nps) {
     for (np of nps) {
         // new row
-        const row = document.createElement('div')
+        const row = document.createElement('a')
         row.className = 'col-md-6'
         row.id = np.name
         // new card
@@ -62,7 +70,6 @@ function renderCards(nps) {
         card.className = "card my-2 p-0"
         // image
         const img = document.createElement('img')
-        console.log(img)
         img.src = np.image
         img.className = "card-img-top"
         img.alt = np.name
@@ -87,12 +94,13 @@ function renderCards(nps) {
         card.appendChild(img)
         card.appendChild(cardBody)
         row.appendChild(card)
+        row.style.textDecoration = 'none'
+        row.href = `np.html?id=${np._id}`
+        // row.addEventListener('click', function () {
+        //     const name = this.id
+        //     console.log(name)
+        //     location.replace(`np.html?id=${np._id}`)
+        // })
         npCards.appendChild(row)
-
-        row.addEventListener('click', function () {
-            const name = this.id
-            console.log(name)
-            location.replace('np.html')
-        })
     }
 }

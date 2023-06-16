@@ -14,7 +14,8 @@ const create = async(req, res) => {
 const getAll = async(req, res) => {
     try {
         const nps = await NPs.find()
-        console.log(nps)
+        //console.log(nps)
+        console.log(req.session)
         if (nps) {
             res.status(200).json(nps)
         } else {
