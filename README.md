@@ -1,5 +1,5 @@
 # GoTrip
-
+![Yosemite Naitonal Park](https://i.imgur.com/7sw4WUG.jpg)
 ## Intro
 **This website is designed for users to plan their trips to national parks.**
 
@@ -12,6 +12,6 @@
 
 ## To be Done
 - Show parks in a map
+- Send notification emails when trip date is close
 - Use sessions across pages to maintain login status
-- Deploy
 - OAuth
