@@ -67,7 +67,7 @@ function renderCards(nps) {
         row.id = np.name
         // new card
         const card = document.createElement('div')
-        card.className = "card my-2 p-0"
+        card.className = "card m-2 p-0"
         // image
         const img = document.createElement('img')
         img.src = np.image
