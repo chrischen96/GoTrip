@@ -6,6 +6,7 @@ const dotenv = require('dotenv').config()
 //     .then(() => console.log('connected to mongodb'))
 //     .catch(error => handleError(error))
 console.log(`mongodb+srv://${process.env.DATABASE_USERNAME}:${process.env.DATABASE_PASSWORD}@calski.lyliq7c.mongodb.net/npdb`)
+console.log(`${process.env.DATABASE_PASSWORD}`)
 mongoose
     .connect(`mongodb+srv://${process.env.DATABASE_USERNAME}:${process.env.DATABASE_PASSWORD}@calski.lyliq7c.mongodb.net/npdb`)
     .then(() => console.log('connected to mongodb'))
