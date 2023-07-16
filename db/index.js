@@ -6,21 +6,20 @@ const dotenv = require('dotenv').config()
 //     .then(() => console.log('connected to mongodb'))
 //     .catch(error => handleError(error))
 console.log(`mongodb+srv://${process.env.DATABASE_USERNAME}:${process.env.DATABASE_PASSWORD}@calski.lyliq7c.mongodb.net/npdb`)
-console.log(`mongodb+srv://calski:p2dKiJ364odz3vfq@calski.lyliq7c.mongodb.net/`)
-
-// mongoose
-//     .connect(`mongodb+srv://${process.env.DATABASE_USERNAME}:${process.env.DATABASE_PASSWORD}@calski.lyliq7c.mongodb.net/npdb`)
-//     .then(() => console.log('connected to mongodb'))
-//     .catch(error => console.log(error.message))
-
-// mongoose.set('debug', true)
 
 mongoose
-    .connect(`mongodb+srv://calski:p2dKiJ364odz3vfq@calski.lyliq7c.mongodb.net/npdb`)
+    .connect(`mongodb+srv://${process.env.DATABASE_USERNAME}:${process.env.DATABASE_PASSWORD}@calski.lyliq7c.mongodb.net/npdb`)
     .then(() => console.log('connected to mongodb'))
     .catch(error => console.log(error.message))
 
 mongoose.set('debug', true)
+
+// mongoose
+//     .connect(`mongodb+srv://calski:p2dKiJ364odz3vfq@calski.lyliq7c.mongodb.net/npdb`)
+//     .then(() => console.log('connected to mongodb'))
+//     .catch(error => console.log(error.message))
+
+// mongoose.set('debug', true)
 
 const db = mongoose.connection
 
