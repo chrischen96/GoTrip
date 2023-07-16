@@ -9,7 +9,7 @@ const dotenv = require('dotenv').config()
 mongoose
     .connect(`mongodb+srv://${process.env.DATABASE_USERNAME}:${process.env.DATABASE_PASSWORD}@calski.lyliq7c.mongodb.net/npdb`)
     .then(() => console.log('connected to mongodb'))
-    .catch(error => handleError(error))
+    .catch(error => console.log(error.message))
 
 mongoose.set('debug', true)
 
