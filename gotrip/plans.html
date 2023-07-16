@@ -51,7 +51,7 @@
   getData()
 
   async function getData() {
-    const res = await axios.get('http://127.0.0.1:3001/api/plans')
+    const res = await axios.get('http://54.193.32.199:3002/api/plans')
     const plans = res.data
     console.log(plans)
     render(plans)
@@ -100,7 +100,7 @@
       deleteBtn.addEventListener('click', async() => {
         const id = event.target.id.substring(1)
         console.log(id)
-        await axios.delete(`http://127.0.0.1:3001/api/plans/${id}`).then((res) => {
+        await axios.delete(`http://54.193.32.199:3002/api/plans/${id}`).then((res) => {
           console.log(res)
         })
         planCards.innerHTML = ''

@@ -7,14 +7,14 @@ const searchButton = document.getElementById('searchButton')
 const npCards = document.getElementById('np-cards') 
 
 // loginButton.addEventListener('click', async() => {
-//     await axios.get('http://127.0.0.1:3001/')
+//     await axios.get('http://54.193.32.199:3002/')
 //     .then(res => {
 //         console.log(res.data)
 //         window.open('index.html')
 //     })
 // })
 
-axios.get('http://127.0.0.1:3001/api/nps')
+axios.get('http://54.193.32.199:3002/api/nps')
     .then((res) => {
         const nps = res.data
         renderCards(nps)
@@ -53,7 +53,7 @@ searchButton.addEventListener('click', async() => {
     const topicValue = topicForm.value ? `&topic=${topicForm.value}` : ''
     const areaValue = areaForm.value ? `&area=${areaForm.value}` : ''
     console.log(stateValue, topicValue, areaValue)
-    const npsResult = await axios.get(`http://127.0.0.1:3001/api/nps/find?${stateValue}${topicValue}${areaValue}`)
+    const npsResult = await axios.get(`http://54.193.32.199:3002/api/nps/find?${stateValue}${topicValue}${areaValue}`)
     const nps = npsResult.data
     console.log(nps)
     renderCards(nps)

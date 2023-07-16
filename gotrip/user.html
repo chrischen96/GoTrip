@@ -97,7 +97,7 @@
       invalid.innerHTML = 'Please proved Email and Password.'
     } else {
       console.log(email,password)
-      await axios.get(`http://127.0.0.1:3001/api/user?email=${email}&password=${password}`).then((resData) => {
+      await axios.get(`http://54.193.32.199:3002/api/user?email=${email}&password=${password}`).then((resData) => {
         const res = resData.data
         console.log(res)
         if (res == 'Not found') {

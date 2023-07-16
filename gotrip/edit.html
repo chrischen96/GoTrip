@@ -90,7 +90,7 @@
 
   
   async function getPlan() {
-    const planData = await axios.get(`http://127.0.0.1:3001/api/plans/id/${id}`)
+    const planData = await axios.get(`http://54.193.32.199:3002/api/plans/id/${id}`)
     const plan = planData.data
     console.log(plan)
     title.innerHTML = plan.destination
@@ -114,7 +114,7 @@
     console.log(title.innerText)
     //const user = "cxsept@gmail.com"
     console.log(titleInput, dateInput)
-    await axios.put(`http://127.0.0.1:3001/api/plans/${id}`,{
+    await axios.put(`http://54.193.32.199:3002/api/plans/${id}`,{
       title: titleInput,
       destination: title.innerText,
       //user: user,

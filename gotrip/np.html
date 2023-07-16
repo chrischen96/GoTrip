@@ -100,7 +100,7 @@
   const users = document.getElementById('users')
   const createButton = document.getElementById('createButton')
 
-  const np = axios(`http://127.0.0.1:3001/api/nps/id/${id}`)
+  const np = axios(`http://54.193.32.199:3002/api/nps/id/${id}`)
     .then( res => {
       console.log(res)
       const np = res.data
@@ -116,12 +116,12 @@
     const durationInput = document.getElementById('durationInput').value
     const budgetInput = document.getElementById('budgetInput').value
     const noteInput = document.getElementById('noteInput').value
-    const np = await axios(`http://127.0.0.1:3001/api/nps/id/${id}`)
+    const np = await axios(`http://54.193.32.199:3002/api/nps/id/${id}`)
     const destination = np.data.name
     console.log(destination)
     const user = "cxsept@gmail.com"
     console.log(titleInput, dateInput)
-    await axios.post('http://127.0.0.1:3001/api/plans',{
+    await axios.post('http://54.193.32.199:3002/api/plans',{
       title: titleInput,
       destination: destination,
       user: user,
